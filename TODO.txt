@@ -1,0 +1,122 @@
+Trimmer - URL Shortener TODO
+=============================
+Goal: Master System Design, Microservices and Spring concepts with live implementation
+
+CACHING
+[DONE] 1. Add TTL (Time To Live) to custom cache
+[DONE] 2. Add max size limit with LRU eviction to cache
+[SKIP] 3. Add cache stats — operational, not system design
+[DONE] 4. Migrate to Spring Cache (@Cacheable) — abstraction layers
+[DONE] 5. Integrate Redis — distributed caching, shared across instances
+
+API DESIGN & DATA
+[DONE] 6. Return JSON responses from all endpoints — proper REST API
+[DONE] 7. Database indexing — speed up queries at scale
+[DONE] 8. Pagination — handle large datasets (GET /urls?page=0&size=10)
+[DONE] 9. Rate limiting — Token Bucket & Sliding Window (limit requests per IP)
+
+ASYNC PROCESSING & CONCURRENCY (in Trimmer)
+[DONE] 10. Click count tracking — async with producer-consumer pattern
+[DONE] 11. Thread pool — process async tasks (click events) with fixed worker pool
+[DONE] 12. Job scheduling — scheduled cleanup of expired URLs (ScheduledExecutorService)
+[DONE] 13. Message queues with RabbitMQ — decouple click tracking from redirect
+[DONE] 14. Message queues with Kafka — high throughput event streaming, replace RabbitMQ
+
+SCALABILITY & RELIABILITY
+[DONE] 15. Load balancing — run multiple app instances behind a balancer (Nginx)
+[DONE] 16. Database replication — read replicas for scaling reads
+[SKIP] 17. Circuit breaker (Resilience4j) — handle failures gracefully (Resilience4j not yet compatible with Spring Boot 4)
+
+SECURITY
+[DONE] 18. Spring Security + JWT authentication — stateless auth
+[DONE] 19. User accounts — link URLs to users (OAuth2 skipped)
+
+MONITORING & OBSERVABILITY
+[DONE] 20. Logging (SLF4J/Logback) — structured logging
+[DONE] 21. Health checks & metrics (Spring Actuator) — monitor app health
+[SKIP] 22. Distributed tracing — Micrometer Brave not compatible with Spring Boot 4 (revisit after microservices split)
+
+FRONTEND
+[DONE] 23. Build React frontend — consume REST API, JWT login, URL dashboard (replaced Thymeleaf)
+
+NOSQL
+[DONE] 28. MongoDB — store analytics/click events in MongoDB, learn when NoSQL fits vs SQL
+
+ADVANCED / MICROSERVICES
+[ ] 24. Split into microservices — URL service, Auth service, Analytics service
+[ ] 25. Docker & containerization — package services in containers
+[ ] 26. CI/CD pipeline — automated build, test, deploy
+[ ] 27. CDN & URL geo-routing — serve redirects from edge locations
+
+=============================
+WHATSAPP PROJECT (Next Project — SD Interview Prep)
+=============================
+Goal: Master HLD + LLD for WhatsApp-style messaging system. Simulate real interview questions.
+
+HLD INTERVIEW QUESTIONS TO MASTER:
+[ ] 1. Estimate scale — DAU, messages/sec, storage per day
+[ ] 2. Core architecture — what components are needed? (API, DB, Queue, WebSocket)
+[ ] 3. Message delivery — how does a message reach the receiver?
+[ ] 4. Offline delivery — what happens when receiver is offline?
+[ ] 5. Group messaging — how to fan-out to 1000 members efficiently?
+[ ] 6. Message ordering — how to guarantee order in a distributed system?
+[ ] 7. Media storage — how to store and serve images/videos at scale?
+[ ] 8. Read receipts — how to track sent/delivered/read status?
+[ ] 9. Scaling — how to handle 1B users? (sharding, partitioning)
+[ ] 10. Database choice — SQL vs NoSQL, why Cassandra for messages?
+
+LLD IMPLEMENTATION (Spring Boot):
+[ ] 1. User registration + JWT auth (reuse from Trimmer)
+[ ] 2. WebSocket for real-time messaging
+[ ] 3. Message persistence (Cassandra or PostgreSQL)
+[ ] 4. Message status — SENT, DELIVERED, READ
+[ ] 5. Offline message queue — store and deliver when user reconnects
+[ ] 6. Group chat — group creation, membership, fan-out
+[ ] 7. Kafka for message fan-out at scale
+[ ] 8. Media upload — store in S3/local, send URL in message
+
+=============================
+CONCURRENCY LAB (Separate Project)
+=============================
+Goal: Master multithreading and concurrency patterns from scratch (Pure Java, no Spring)
+
+[DONE] 1. Synchronization patterns — locks, semaphores, countdownlatch, cyclicbarrier
+[DONE] 2. Concurrent data structures — compare ConcurrentHashMap, BlockingQueue, AtomicInteger
+[DONE] 3. Producer-Consumer — multi-producer & consumer with bounded blocking queue
+[DONE] 4. Thread pool — fixed worker pool with task queue (build from scratch)
+[DONE] 5. Task scheduler — delay execution with priority queue
+[DONE] 6. Rate limiter — Token Bucket implementation from scratch
+[DONE] 7. Sliding Window rate limiter — from scratch
+[DONE] 8. Log processor — stream logs, aggregate results concurrently
+[DONE] 9. ThreadFactory — custom thread naming, daemon threads, exception handlers
+
+=============================
+DESIGN PATTERNS LAB (Separate Project)
+=============================
+Goal: Master creational, structural and behavioural patterns deeply from scratch (Pure Java, no Spring)
+
+CREATIONAL
+[DONE] 1. Singleton — one instance, thread-safe implementation
+[DONE] 2. Factory Method — create objects without specifying exact class
+[DONE] 3. Abstract Factory — families of related objects
+[DONE] 4. Builder — step-by-step object construction
+[DONE] 5. Prototype — clone objects instead of creating from scratch
+
+STRUCTURAL
+[DONE] 6. Adapter — make incompatible interfaces work together
+[DONE] 7. Decorator — add behaviour to objects dynamically
+[DONE] 8. Facade — simplified interface to a complex subsystem
+[DONE] 9. Proxy — control access to an object
+[ ] 10. Composite — tree structures, treat individual and groups uniformly
+[ ] 11. Bridge — separate abstraction from implementation
+[ ] 12. Flyweight — share common state to save memory
+
+BEHAVIOURAL
+[DONE] 13. Strategy — swap algorithms at runtime
+[DONE] 14. Observer — event-driven notification (publish-subscribe)
+[DONE] 15. Command — encapsulate requests as objects
+[DONE] 16. Template Method — define skeleton, let subclasses fill in steps
+[ ] 17. Iterator — traverse collections without exposing internals
+[DONE] 18. Chain of Responsibility — pass request along a chain of handlers
+[ ] 19. State — change behaviour based on internal state
+[ ] 20. Mediator — central object coordinates communication between others
