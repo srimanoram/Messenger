@@ -66,8 +66,10 @@ HLD INTERVIEW QUESTIONS TO MASTER:
 [ ] 10. Database choice — SQL vs NoSQL, why Cassandra for messages?
 
 LLD IMPLEMENTATION (Spring Boot):
-[ ] 1. User registration + JWT auth (reuse from Trimmer)
-[ ] 2. WebSocket for real-time messaging
+[DONE] 1. User registration + JWT auth (reuse from Trimmer)
+[WIP] 2. WebSocket for real-time messaging
+       - Raw WebSocket exploration done (1-to-1, group, ping/pong, heartbeat timeout)
+       - STOMP + message broker next
 [ ] 3. Message persistence (Cassandra or PostgreSQL)
 [ ] 4. Message status — SENT, DELIVERED, READ
 [ ] 5. Offline message queue — store and deliver when user reconnects

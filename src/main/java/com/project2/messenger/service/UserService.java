@@ -5,9 +5,9 @@ import com.project2.messenger.repository.UserRepository;
 import org.jspecify.annotations.NonNull;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+@Service
 public class UserService implements UserDetailsService {
 
     private final UserRepository userRepository;
@@ -16,7 +16,7 @@ public class UserService implements UserDetailsService {
     }
 
     @Override
-    public User loadUserByUsername(@NonNull String username) throws UsernameNotFoundException {
+    public User loadUserByUsername(String username) throws UsernameNotFoundException {
        return userRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + username));
     }
 
