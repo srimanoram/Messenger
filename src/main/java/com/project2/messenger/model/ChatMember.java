@@ -1,6 +1,8 @@
 package com.project2.messenger.model;
 
 
+import com.project2.messenger.model.records.ChatMemberId;
+import com.project2.messenger.model.records.ChatRole;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

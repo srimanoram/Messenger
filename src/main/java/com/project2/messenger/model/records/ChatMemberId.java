@@ -1,4 +1,4 @@
-package com.project2.messenger.model;
+package com.project2.messenger.model.records;
 
 
 import jakarta.persistence.Embeddable;
