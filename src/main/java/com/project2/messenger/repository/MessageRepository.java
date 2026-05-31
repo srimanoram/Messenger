@@ -11,5 +11,5 @@ import java.util.List;
 
 public interface MessageRepository extends JpaRepository<Message, Long> {
 
-    List<Message> findByChatAndIdLessThanOrderByIdDesc(Chat chat, Long beforeId, Pageable pageable);
+    List<Message> findByChat_IdAndIdLessThanOrderByIdDesc(Long chatId, Long beforeId, Pageable pageable);
 }

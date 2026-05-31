@@ -29,8 +29,12 @@ public class ChatService {
         return chatRepository.findChatsForUser(user);
     }
 
+    public Chat findChatById(Long id) {
+        return chatRepository.findById(id).orElseThrow(() -> new NoSuchElementException("Chat not found"));
+    }
+
     @Transactional
-    public Chat openPersonalChat(User user2) {
+    public Chat openPrivateChat(User user2) {
         User user = ServiceUtil.getLoggedInUser();
 
         User smaller, larger;
@@ -56,13 +60,11 @@ public class ChatService {
             return newChat;
         });
 
-
-
         return chat;
     }
 
     @Transactional
-    public Chat createGroupChat(List<User> users, String name) {
+    public Chat openGroupChat(List<User> users, String name) {
         User user = ServiceUtil.getLoggedInUser();
         Set<User> usersSet = new LinkedHashSet<>(users);
         usersSet.remove(user);
